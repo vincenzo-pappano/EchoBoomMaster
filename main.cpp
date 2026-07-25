@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 #endif
     QGuiApplication app(argc, argv);
 
-    const QUrl url(QStringLiteral("qrc:/main.qml"));
+    const QUrl url(QStringLiteral("qrc:/qml/main.qml"));
 
     qputenv("QML_XHR_ALLOW_FILE_READ", "1");
 
