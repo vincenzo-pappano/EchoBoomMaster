@@ -4,5 +4,6 @@
         <file>app/AppRoot.qml</file>
         <file>panels/MapPanel.qml</file>
         <file>panels/DashboardPanel.qml</file>
+        <file>devices/DeviceManager.qml</file>
     </qresource>
 </RCC>

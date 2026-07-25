@@ -5,12 +5,16 @@ import QtQuick.Layouts 1.15
 import CustomWindow 1.0
 
 import "../panels"
+import "../devices"
 
 FixedAspectRatioWindow {
     id: rootWindow
+
+    property int fontSize: 30
+    property string rootAppRootUrl: ""
+
     visible: true
     title: qsTr("Hello World")
-    property int fontSize: 30
 
     width: 1280
     height: 720
@@ -28,6 +32,15 @@ FixedAspectRatioWindow {
                                              height / baseHeight
                                              )
 
+
+    DeviceManager {
+        id: deviceManagerId
+        appRootUrl: rootAppRootUrl
+
+        onDevicesLoaded: {
+            console.log(JSON.stringify(deviceManagerId.devices))
+        }
+    }
 
     Item {
         id: scaledContent
@@ -52,7 +65,7 @@ FixedAspectRatioWindow {
         Rectangle {
 
             anchors.fill: parent
-            color: "royalblue" //"#e8e8e8"
+            color: "royalblue"
 
             RowLayout {
 
@@ -73,6 +86,10 @@ FixedAspectRatioWindow {
                 }
 
             }
-        }
+        } // Rectangle
+    } // Item
+
+    Component.onCompleted: {
+        deviceManagerId.loadDevices()
     }
 }

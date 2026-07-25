@@ -1,0 +1,62 @@
+[
+    {
+        "deviceId": "D01",
+        "video": {
+			"mode": "file",
+            "file": "videos/1_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 22.562600,
+            "longitude": 88.363900
+        },
+        "status": "SAFE"
+    },
+    {
+        "deviceId": "D02",
+        "video": {
+			"mode": "file",
+            "file": "videos/2_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 22.582400,
+            "longitude": 88.365000
+        },
+        "status": "ACTIVE"
+    },
+    {
+        "deviceId": "D03",
+        "video": {
+			"mode": "file",
+            "file": "videos/3_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 22.571800,
+            "longitude": 88.357500
+        },
+        "status": "SAFE"
+    },
+    {
+        "deviceId": "D04",
+        "video": {
+			"mode": "file",
+            "file": "videos/4_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 22.570900,
+            "longitude": 88.385000
+        },
+        "status": "ACTIVE"
+    },
+    {
+        "deviceId": "D05",
+        "video": {
+			"mode": "file",
+            "file": "videos/5_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 22.572200,
+            "longitude": 88.346200
+        },
+        "status": "SAFE"
+    }
+]
