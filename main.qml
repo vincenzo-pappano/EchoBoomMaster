@@ -12,8 +12,8 @@ FixedAspectRatioWindow {
     width: 1280
     height: 720
 
-    //minimumWidth: 800
-    //minimumHeight: 450
+    minimumWidth: 800
+    minimumHeight: 450
 
     readonly property real baseWidth: 1920
     readonly property real baseHeight: 1080

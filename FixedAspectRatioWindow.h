@@ -28,6 +28,14 @@ protected:
 
 private:
     qreal m_aspectRatio = 16.0 / 9.0;
+
+    /*
+     * The window center is captured when interactive resizing begins.
+     * It remains unchanged throughout the complete resize operation.
+     */
+    int m_resizeCenterX = 0;
+    int m_resizeCenterY = 0;
+    bool m_resizeCenterValid = false;
 };
 
 #endif
