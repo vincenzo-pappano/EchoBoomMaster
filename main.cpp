@@ -25,6 +25,8 @@ int main(int argc, char *argv[])
         0,
         "FixedAspectRatioWindow");
 
+    qDebug() << "Current Git Commit ID:" << GIT_COMMIT_ID;
+
     QQmlApplicationEngine engine;
 
     QObject::connect(
@@ -40,6 +42,8 @@ int main(int argc, char *argv[])
     QString appRootUrl = QUrl::fromLocalFile(QDir::currentPath() + "/").toString();
     qDebug() << "appRootUrl: " << appRootUrl << Qt::endl;
     engine.rootContext()->setContextProperty("appRootUrl", appRootUrl);
+
+    engine.rootContext()->setContextProperty("gitCommitId", QString(GIT_COMMIT_ID));
 
     engine.load(url);
 

@@ -4,5 +4,6 @@ import "app"
 
 AppRoot {
     rootAppRootUrl: appRootUrl
+    rootGitCommitId: gitCommitId
     fontSize: 30
 }

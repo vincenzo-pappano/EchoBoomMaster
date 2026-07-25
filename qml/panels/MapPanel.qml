@@ -1,13 +1,14 @@
 import QtQuick 2.15
 
 Rectangle {
-    id: firstPanelId
+    id: mapPanelId
     property int fontSize: 30
+    property string text: ""
 
     color: "royalblue"
     Text {
         anchors.centerIn: parent
-        text: "Map Panel"
-        font.pixelSize: fontSize
+        text: mapPanelId.text
+        font.pixelSize: mapPanelId.fontSize
     }
 }

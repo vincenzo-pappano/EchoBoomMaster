@@ -9,6 +9,7 @@ ScaledFixedAspectRatioWindow {
 
     property int fontSize: 30
     property string rootAppRootUrl: ""
+    property string rootGitCommitId: ""
     property var model: deviceManagerId.model
 
     visible: true
@@ -16,6 +17,7 @@ ScaledFixedAspectRatioWindow {
 
     Component.onCompleted: {
         deviceManagerId.loadDevices()
+        console.log("Git Commit ID: ", rootGitCommitId)
     }
 
     DeviceManager {
@@ -51,6 +53,7 @@ ScaledFixedAspectRatioWindow {
                 Layout.fillHeight: true
 
                 fontSize: rootId.fontSize
+                text: "Git Commit ID: " + rootId.rootGitCommitId
             }
 
             DashboardPanel {

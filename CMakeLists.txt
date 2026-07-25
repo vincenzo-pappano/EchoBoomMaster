@@ -68,3 +68,14 @@ if(QT_VERSION_MAJOR EQUAL 6)
     qt_import_qml_plugins(EchoBoomMaster)
     qt_finalize_executable(EchoBoomMaster)
 endif()
+
+
+execute_process(
+    COMMAND git rev-parse --short HEAD
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    OUTPUT_VARIABLE GIT_COMMIT_HASH
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+
+target_compile_definitions(EchoBoomMaster PRIVATE GIT_COMMIT_ID="${GIT_COMMIT_HASH}")
+
