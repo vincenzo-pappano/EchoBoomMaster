@@ -4,10 +4,13 @@ import Qt.labs.settings 1.1
 import QtQuick.Layouts 1.15
 import CustomWindow 1.0
 
+import "../panels"
+
 FixedAspectRatioWindow {
     id: rootWindow
     visible: true
     title: qsTr("Hello World")
+    property int fontSize: 30
 
     width: 1280
     height: 720
@@ -55,31 +58,20 @@ FixedAspectRatioWindow {
 
                 anchors.fill: parent
 
-                Rectangle {
-                    id: firstPanelId
-
+                MapPanel {
+                    id: mapPanelId
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    color: "royalblue"
-                    Text {
-                        anchors.centerIn: parent
-                        text: "First Panel"
-                        font.pixelSize: 20
-                    }
+                    fontSize: rootWindow.fontSize
                 }
 
-                Rectangle {
-                    id: secondPanelId
-
+                DashboardPanel {
+                    id: dashboardPanelId
                     Layout.preferredWidth: 420
                     Layout.fillHeight: true
-                    color: "blue"
-                    Text {
-                        anchors.centerIn: parent
-                        text: "Second Panel"
-                        font.pixelSize: 20
-                    }
+                    fontSize: rootWindow.fontSize
                 }
+
             }
         }
     }

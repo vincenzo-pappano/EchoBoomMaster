@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>app/AppRoot.qml</file>
+        <file>panels/MapPanel.qml</file>
+        <file>panels/DashboardPanel.qml</file>
     </qresource>
 </RCC>
