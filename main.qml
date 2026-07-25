@@ -2,58 +2,83 @@ import QtQuick 2.15
 import QtQuick.Window 2.15
 import Qt.labs.settings 1.1
 import QtQuick.Layouts 1.15
+import CustomWindow 1.0
 
-Window {
-    id: root
-    width: 1280
-    height: 720
+FixedAspectRatioWindow {
+    id: rootWindow
     visible: true
     title: qsTr("Hello World")
 
-    minimumWidth: 800
-    minimumHeight: 450
+    width: 1280
+    height: 720
+
+    //minimumWidth: 800
+    //minimumHeight: 450
+
+    readonly property real baseWidth: 1920
+    readonly property real baseHeight: 1080
+
+    aspectRatio: baseWidth / baseHeight
+
+    readonly property real currentScale: Math.min(
+                                             width / baseWidth,
+                                             height / baseHeight
+                                             )
 
 
-    Rectangle {
+    Item {
+        id: scaledContent
 
-        anchors.fill: parent
-        color: "royalblue" //"#e8e8e8"
+        width: rootWindow.baseWidth
+        height: rootWindow.baseHeight
 
-        RowLayout {
+        x: (rootWindow.width -
+            width * rootWindow.currentScale) / 2
+
+        y: (rootWindow.height -
+            height * rootWindow.currentScale) / 2
+
+        transform: Scale {
+            origin.x: 0
+            origin.y: 0
+
+            xScale: rootWindow.currentScale
+            yScale: rootWindow.currentScale
+        }
+
+        Rectangle {
 
             anchors.fill: parent
+            color: "royalblue" //"#e8e8e8"
 
-            Rectangle {
-                id: firstPanelId
+            RowLayout {
 
-                Layout.preferredWidth: (root.width*3)/4
-                Layout.fillHeight: true
+                anchors.fill: parent
 
-                color: "royalblue"
-                //border.color: "#808080"
-                //border.width: 1
+                Rectangle {
+                    id: firstPanelId
 
-                Text {
-                    anchors.centerIn: parent
-                    text: "First Panel"
-                    font.pixelSize: 20
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+                    color: "royalblue"
+                    Text {
+                        anchors.centerIn: parent
+                        text: "First Panel"
+                        font.pixelSize: 20
+                    }
                 }
-            }
 
-            Rectangle {
-                id: secondPanelId
+                Rectangle {
+                    id: secondPanelId
 
-                Layout.preferredWidth: root.width/4
-                Layout.fillHeight: true
-
-                color: "blue"
-                //border.color: "#808080"
-                //border.width: 1
-
-                Text {
-                    anchors.centerIn: parent
-                    text: "Second Panel"
-                    font.pixelSize: 20
+                    Layout.preferredWidth: 420
+                    Layout.fillHeight: true
+                    color: "blue"
+                    Text {
+                        anchors.centerIn: parent
+                        text: "Second Panel"
+                        font.pixelSize: 20
+                    }
                 }
             }
         }

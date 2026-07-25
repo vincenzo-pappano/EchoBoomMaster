@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     qmlRegisterType<FixedAspectRatioWindow>(
-        "CustomWindows",
+        "CustomWindow",
         1,
         0,
         "FixedAspectRatioWindow");
