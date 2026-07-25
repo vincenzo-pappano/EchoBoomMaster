@@ -36,6 +36,8 @@ else()
     else()
         add_executable(EchoBoomMaster
           ${PROJECT_SOURCES}
+          FixedAspectRatioWindow.h
+          FixedAspectRatioWindow.cpp
         )
     endif()
 endif()
