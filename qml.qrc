@@ -7,5 +7,10 @@
         <file>qml/devices/DeviceManager.qml</file>
         <file>qml/app/ScaledFixedAspectRatioWindow.qml</file>
         <file>qml/panels/MapRefreshContainer.qml</file>
+		
+        <file>qml/images/device.png</file>
+        <file>qml/images/logo.png</file>
+        <file>qml/images/centurion.png</file>
+
     </qresource>
 </RCC>
