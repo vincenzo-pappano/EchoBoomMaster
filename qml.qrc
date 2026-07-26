@@ -6,5 +6,6 @@
         <file>qml/panels/DashboardPanel.qml</file>
         <file>qml/devices/DeviceManager.qml</file>
         <file>qml/app/ScaledFixedAspectRatioWindow.qml</file>
+        <file>qml/panels/MapRefreshContainer.qml</file>
     </qresource>
 </RCC>

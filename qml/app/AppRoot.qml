@@ -52,8 +52,8 @@ ScaledFixedAspectRatioWindow {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
 
-                fontSize: rootId.fontSize
-                text: "Git Commit ID: " + rootId.rootGitCommitId
+                //fontSize: rootId.fontSize
+                //text: "Git Commit ID: " + rootId.rootGitCommitId
             }
 
             DashboardPanel {

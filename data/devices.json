@@ -6,8 +6,8 @@
             "file": "videos/1_qt.wmv"
 		},
         "coordinates": {
-            "latitude": 22.562600,
-            "longitude": 88.363900
+            "latitude": 33.082826,
+            "longitude": 79.086735
         },
         "status": "SAFE"
     },
@@ -18,8 +18,8 @@
             "file": "videos/2_qt.wmv"
 		},
         "coordinates": {
-            "latitude": 22.582400,
-            "longitude": 88.365000
+            "latitude": 33.076857,
+            "longitude": 79.093601
         },
         "status": "ACTIVE"
     },
@@ -30,8 +30,8 @@
             "file": "videos/3_qt.wmv"
 		},
         "coordinates": {
-            "latitude": 22.571800,
-            "longitude": 88.357500
+            "latitude": 33.066212,
+            "longitude": 79.099352
         },
         "status": "SAFE"
     },
@@ -42,8 +42,8 @@
             "file": "videos/4_qt.wmv"
 		},
         "coordinates": {
-            "latitude": 22.570900,
-            "longitude": 88.385000
+            "latitude": 33.054882,
+            "longitude": 79.109351
         },
         "status": "ACTIVE"
     },
@@ -54,8 +54,236 @@
             "file": "videos/5_qt.wmv"
 		},
         "coordinates": {
-            "latitude": 22.572200,
-            "longitude": 88.346200
+            "latitude": 33.040278,
+            "longitude": 79.119222
+        },
+        "status": "SAFE"
+    },
+    {
+        "deviceId": "D06",
+        "video": {
+			"mode": "file",
+            "file": "videos/5_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 33.040278,
+            "longitude": 79.133641
+        },
+        "status": "SAFE"
+    },
+    {
+        "deviceId": "D07",
+        "video": {
+			"mode": "file",
+            "file": "videos/5_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 33.025455,
+            "longitude": 79.149649
+        },
+        "status": "SAFE"
+    },
+    {
+        "deviceId": "D08",
+        "video": {
+			"mode": "file",
+            "file": "videos/5_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 33.013184,
+            "longitude": 79.153683
+        },
+        "status": "SAFE"
+    },
+    {
+        "deviceId": "D09",
+        "video": {
+			"mode": "file",
+            "file": "videos/5_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 33.007930,
+            "longitude": 79.157030
+        },
+        "status": "SAFE"
+    },
+    {
+        "deviceId": "D10",
+        "video": {
+			"mode": "file",
+            "file": "videos/5_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 33.013508,
+            "longitude": 79.162309
+        },
+        "status": "SAFE"
+    },
+    {
+        "deviceId": "D11",
+        "video": {
+			"mode": "file",
+            "file": "videos/5_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 33.008326,
+            "longitude": 79.169132
+        },
+        "status": "SAFE"
+    },
+    {
+        "deviceId": "D12",
+        "video": {
+			"mode": "file",
+            "file": "videos/5_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 33.000624,
+            "longitude": 79.168703
+        },
+        "status": "SAFE"
+    },
+    {
+        "deviceId": "D13",
+        "video": {
+			"mode": "file",
+            "file": "videos/5_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 32.994433,
+            "longitude": 79.176085
+        },
+        "status": "SAFE"
+    },
+    {
+        "deviceId": "D14",
+        "video": {
+			"mode": "file",
+            "file": "videos/5_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 32.984822,
+            "longitude": 79.175784
+        },
+        "status": "SAFE"
+    },
+    {
+        "deviceId": "D15",
+        "video": {
+			"mode": "file",
+            "file": "videos/5_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 32.986946,
+            "longitude": 79.185440
+        },
+        "status": "SAFE"
+    },
+    {
+        "deviceId": "D16",
+        "video": {
+			"mode": "file",
+            "file": "videos/5_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 32.982626,
+            "longitude": 79.193637
+        },
+        "status": "SAFE"
+    },
+    {
+        "deviceId": "D17",
+        "video": {
+			"mode": "file",
+            "file": "videos/5_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 32.976722,
+            "longitude": 79.202649
+        },
+        "status": "SAFE"
+    },
+    {
+        "deviceId": "D18",
+        "video": {
+			"mode": "file",
+            "file": "videos/5_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 32.966605,
+            "longitude": 79.204580
+        },
+        "status": "SAFE"
+    },
+    {
+        "deviceId": "D19",
+        "video": {
+			"mode": "file",
+            "file": "videos/5_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 32.970854,
+            "longitude": 79.226081
+        },
+        "status": "SAFE"
+    },
+    {
+        "deviceId": "D20",
+        "video": {
+			"mode": "file",
+            "file": "videos/5_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 32.974814,
+            "longitude": 79.236166
+        },
+        "status": "SAFE"
+    },
+    {
+        "deviceId": "D21",
+        "video": {
+			"mode": "file",
+            "file": "videos/5_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 32.961816,
+            "longitude": 79.243805
+        },
+        "status": "SAFE"
+    },
+    {
+        "deviceId": "D22",
+        "video": {
+			"mode": "file",
+            "file": "videos/5_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 32.966353,
+            "longitude": 79.261744
+        },
+        "status": "SAFE"
+    },
+    {
+        "deviceId": "D23",
+        "video": {
+			"mode": "file",
+            "file": "videos/5_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 32.961708,
+            "longitude": 79.270198
+        },
+        "status": "SAFE"
+    },
+    {
+        "deviceId": "D24",
+        "video": {
+			"mode": "file",
+            "file": "videos/5_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 32.953930,
+            "longitude": 79.281571
         },
         "status": "SAFE"
     }
