@@ -1,8 +1,8 @@
 import QtQuick 2.15
 
 Rectangle {
-    id: secondPanelId
     property int fontSize: 30
+    property var model: []
 
     color: "blue"
     Text {
@@ -10,4 +10,9 @@ Rectangle {
         text: "Second Panel"
         font.pixelSize: fontSize
     }
+
+    // function onCountChanged(model) {
+    //     console.log("MapPanel model count:", model.count)
+    // }
+
 }
