@@ -11,5 +11,8 @@
         <file>qml/images/logo.png</file>
         <file>qml/images/centurion.png</file>
         <file>qml/devices/DeviceLed.qml</file>
+        <file>qml/devices/DeviceBody.qml</file>
+        <file>qml/devices/DeviceComposite.qml</file>
+        <file>qml/devices/DeviceLedDialog.qml</file>
     </qresource>
 </RCC>

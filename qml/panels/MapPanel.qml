@@ -8,11 +8,8 @@ import "../devices"
 MapRefreshContainer {
     id: rootId
 
-    property var originalCenter:
-        QtPositioning.coordinate(33.01854549251185, 79.18638459788156)
-
+    property var originalCenter: QtPositioning.coordinate(33.01854549251185, 79.18638459788156)
     property int originalZoomLevel: 14
-
     property var model: []
 
     Plugin {
@@ -40,19 +37,17 @@ MapRefreshContainer {
         Component {
             id: deviceDelegateId
             MapQuickItem {
+                id: deviceMapItem
                 // 1 - where to draw it (anchorPoint is normally (0,0))
-                //coordinate: QtPositioning.coordinate(mainMap.center.latitude, mainMap.center.longitude)
                 coordinate: QtPositioning.coordinate(latitude, longitude)
-                anchorPoint.x: ledId.width / 2
-                anchorPoint.y: ledId.height / 2
+                anchorPoint.x: deviceCompositeId.width / 2
+                anchorPoint.y: deviceCompositeId.height / 2
                 // 2 - what to draw
-                sourceItem: DeviceLed {
-                    id: ledId
-                    width: 20
-
+                sourceItem: DeviceComposite {
+                    id: deviceCompositeId
+                    device: model
                     onLedClicked: {
-                        console.log("Clicked:", deviceId, " State:", status)
-                        status = status === "ACTIVE" ? "INACTIVE" : "ACTIVE"
+                        mainMap.openDialogNextToDevice(deviceMapItem, deviceCompositeId)
                     }
                 } // Rectangle
             } // MapQuickItem
@@ -66,8 +61,24 @@ MapRefreshContainer {
                 }
             }
             console.log("MapPanel.qml => model.length:", model.length)
-        }
-    }
+        } // Component
+
+        function openDialogNextToDevice(mapItem, deviceComposite) {
+
+            // mapPoint is the map pixel corresponding to the device latitude/longitude.
+            // Because anchorPoint is at the LED center, mapPoint represents the center of the LED.
+            var mapPoint = mainMap.fromCoordinate(mapItem.coordinate, false)
+
+            // Move from the LED center to: LED right edge + dialogOffset , LED top edge
+            var globalPoint = mainMap.mapToGlobal(
+                        mapPoint.x + deviceComposite.ledWidth / 2 + deviceComposite.dialogOffset + 20,
+                        mapPoint.y - deviceComposite.ledHeight / 2 - 70 )
+
+            // DeviceLed owns the dialog, so ask the composite to pass the position to DeviceLed.
+            deviceComposite.openLedDialogAtGlobal(globalPoint.x, globalPoint.y)
+        } // function
+
+    } // Map
 
     // function onCountChanged(model) {
     //     console.log("MapPanel model count:", model.count)

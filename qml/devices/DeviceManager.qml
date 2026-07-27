@@ -8,6 +8,9 @@ Item {
     property var devices: []
     property alias model: deviceModel
 
+    property int activeCount: 0
+    property int safeCount: 0
+
     signal devicesLoaded(int count)
 
     ListModel {
@@ -150,7 +153,31 @@ Item {
         return true
     } // isValidDevice()
 
-}
+    function updateTotals() {
+        var active = 0
+        var safe = 0
+
+        for (var i = 0; i < deviceModel.count; ++i) {
+            var device = deviceModel.get(i)
+
+            if (device.status === "ACTIVE")
+                ++active
+            else if (device.status === "SAFE")
+                ++safe
+        }
+
+        activeCount = active
+        safeCount = safe
+
+        console.log(active, safe)
+    }
+
+    Connections {
+        target: deviceModel
+
+        onDataChanged: rootId.updateTotals()
+        onCountChanged: rootId.updateTotals()
+    }}
 
 
 // var xhr = new XMLHttpRequest()
