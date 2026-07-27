@@ -14,5 +14,6 @@
         <file>qml/devices/DeviceBody.qml</file>
         <file>qml/devices/DeviceComposite.qml</file>
         <file>qml/devices/DeviceLedDialog.qml</file>
+        <file>qml/media/VideoPreview.qml</file>
     </qresource>
 </RCC>

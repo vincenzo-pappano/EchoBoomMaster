@@ -4,6 +4,7 @@ import QtPositioning 5.15
 import Qt.labs.settings 1.0
 
 import "../devices"
+import "../media"
 
 MapRefreshContainer {
     id: rootId
@@ -52,6 +53,14 @@ MapRefreshContainer {
                 } // Rectangle
             } // MapQuickItem
         } // Component
+
+        VideoPreview {
+            width: 480
+            height: 270
+
+            sourceUrl: "file:///C:/Users/vince/Documents/QT/EchoBoomMaster/videos/1_qt.wmv"
+            active: true
+        }
 
         Component.onCompleted: {
             for (var t = 0; t < supportedMapTypes.length; ++t) {
