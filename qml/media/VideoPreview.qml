@@ -33,7 +33,16 @@ Item {
         repeat: false
 
         onTriggered: {
-            if (rootId.active) {
+            var fullUrl = Qt.resolvedUrl(rootId.sourceUrl)
+
+            console.log("VideoPreview sourceUrl:",
+                        rootId.sourceUrl.toString())
+
+            console.log("VideoPreview resolved URL:",
+                        fullUrl.toString())
+
+            if (rootId.active &&
+                    rootId.sourceUrl.toString() !== "") {
                 videoId.play()
             }
         }

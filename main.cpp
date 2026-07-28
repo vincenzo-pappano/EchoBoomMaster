@@ -45,6 +45,18 @@ int main(int argc, char *argv[])
 
     engine.rootContext()->setContextProperty("gitCommitId", QString(GIT_COMMIT_ID));
 
+    const QString videoRootUrl =
+        QUrl::fromLocalFile(
+            QCoreApplication::applicationDirPath() + "/"
+            ).toString();
+
+    qDebug() << "videoRootUrl:" << videoRootUrl;
+
+    engine.rootContext()->setContextProperty(
+        "videoRootUrl",
+        videoRootUrl
+        );
+
     engine.load(url);
 
     return QGuiApplication::exec();

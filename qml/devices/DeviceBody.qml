@@ -4,6 +4,8 @@ import QtQuick.Controls 2.15
 Item {
     id: rootId
     property var device
+    signal bodyHoverChanged(bool hovered)
+
 
     property string deviceId: ""
     //readonly property bool modalVisible: armDialog.visible
@@ -21,6 +23,17 @@ Item {
 
         source: "qrc:/qml/images/device.png"
         fillMode: Image.PreserveAspectFit
+
+
+        MouseArea {
+            anchors.fill: parent
+
+            hoverEnabled: true
+            acceptedButtons: Qt.NoButton
+
+            onEntered: { rootId.bodyHoverChanged(true) }
+            onExited: { rootId.bodyHoverChanged(false) }
+        }
     }
 
     Text {

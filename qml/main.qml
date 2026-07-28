@@ -4,6 +4,7 @@ import "app"
 
 AppRoot {
     rootAppRootUrl: appRootUrl
+    rootVideoRootUrl: videoRootUrl
     rootGitCommitId: gitCommitId
     fontSize: 30
 }
