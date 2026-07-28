@@ -9,6 +9,7 @@ ScaledFixedAspectRatioWindow {
 
     property int fontSize: 30
     property string rootAppRootUrl: ""
+    property string rootVideoRootUrl: ""
     property string rootGitCommitId: ""
 
     visible: true
@@ -40,6 +41,8 @@ ScaledFixedAspectRatioWindow {
             MapPanel {
 
                 id: mapPanelId
+                videoRootUrl: rootId.rootVideoRootUrl
+
 
                 Layout.fillWidth: true
                 Layout.fillHeight: true

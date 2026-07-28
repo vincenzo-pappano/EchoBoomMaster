@@ -6,6 +6,7 @@ Rectangle {
     id: rootId
 
     property var device
+    property string videoRootUrl
 
     width: 260
     height: contentColumn.implicitHeight + 20
@@ -25,19 +26,16 @@ Rectangle {
 
         spacing: 6
 
-        // Rectangle {
-        //     width: parent.width
-        //     height: width * 9 / 16
-        //     color: "black"
-        // }
-
         VideoPreview {
             width: parent.width
             height: width * 9 / 16
 
-            sourceUrl: rootId.device ? rootId.device.videoFile : ""
-            //sourceUrl: "file:///C:/Users/vince/Documents/QT/EchoBoomMaster/videos/1_qt.wmv"
-            active: true
+            sourceUrl: rootId.device && rootId.device.videoFile
+                       ? rootId.videoRootUrl + rootId.device.videoFile
+                       : ""
+            active: rootId.visible
+                    && rootId.device
+                    && rootId.device.videoFile
         }
 
         Text {
