@@ -1,12 +1,14 @@
 import QtQuick 2.15
 
+import "../media"
+
 Rectangle {
     id: rootId
 
     property var device
 
     width: 260
-    height: 120
+    height: contentColumn.implicitHeight + 20
 
     radius: 4
     color: "#202832"
@@ -17,10 +19,26 @@ Rectangle {
     z: 1000
 
     Column {
+        id: contentColumn
         anchors.fill: parent
         anchors.margins: 10
 
         spacing: 6
+
+        // Rectangle {
+        //     width: parent.width
+        //     height: width * 9 / 16
+        //     color: "black"
+        // }
+
+        VideoPreview {
+            width: parent.width
+            height: width * 9 / 16
+
+            sourceUrl: rootId.device ? rootId.device.videoFile : ""
+            //sourceUrl: "file:///C:/Users/vince/Documents/QT/EchoBoomMaster/videos/1_qt.wmv"
+            active: true
+        }
 
         Text {
             width: parent.width
