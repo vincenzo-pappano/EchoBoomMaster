@@ -84,16 +84,49 @@ MapRefreshContainer {
                     break
                 }
             }
-            console.log("MapPanel.qml => model.length:", model.length)
         } // Component
-
-
     } // Map
+
+    MapZoomControls {
+        id: zoomControls
+        // anchors.right: parent.right
+        // anchors.rightMargin: 18
+        // anchors.verticalCenter: parent.verticalCenter
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 4
+        anchors.horizontalCenter: parent.horizontalCenter
+        zoomLevel: mainMap.zoomLevel
+        minimumZoomLevel: mainMap.minimumZoomLevel
+        maximumZoomLevel: mainMap.maximumZoomLevel
+
+        onZoomInRequested: {
+            mainMap.zoomLevel = Math.min(mainMap.maximumZoomLevel, mainMap.zoomLevel + 1)
+        }
+
+        onZoomOutRequested: {
+            mainMap.zoomLevel = Math.max(mainMap.minimumZoomLevel, mainMap.zoomLevel - 1)
+        }
+
+        // onResetRequested: {
+        //     mainMap.center = root.originalCenter
+        //     mainMap.zoomLevel = root.originalZoomLevel
+        // }
+
+        onZoomToAllRequested: {
+            console.log(rootId.model)
+            if (rootId.model)
+                if (rootId.model.count > 0)
+                    mainMap.fitViewportToMapItems()
+                else
+                    console.log("'count' is 0")
+            else
+                console.log("model is undefined")
+        }
+    } // MapZoomControls
 
     Component.onCompleted: {
         console.log(videoRootUrl)
     }
-
 
     function globalPointNextToDevice(mapItem, offsetX, offsetY) {
 
@@ -112,7 +145,6 @@ MapRefreshContainer {
             mapPoint.y + offsetY
         )
     }
-
 
     function openDialogNextToDevice(mapItem, deviceComposite) {
 
@@ -135,7 +167,6 @@ MapRefreshContainer {
             globalPoint.y
         )
     }
-
 
     function showPopupNextToDevice(mapItem, deviceComposite) {
 

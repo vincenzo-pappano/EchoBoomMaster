@@ -16,5 +16,6 @@
         <file>qml/devices/DeviceLedDialog.qml</file>
         <file>qml/media/VideoPreview.qml</file>
         <file>qml/devices/DevicePopup.qml</file>
+        <file>qml/panels/MapZoomControls.qml</file>
     </qresource>
 </RCC>
