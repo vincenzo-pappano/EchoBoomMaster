@@ -45,13 +45,14 @@ Rectangle {
             font.bold: true
 
             Layout.topMargin: 32
+            Layout.bottomMargin: 50
             Layout.alignment: Qt.AlignHCenter
         }
 
-        Item {
-            Layout.topMargin: 50
-            Layout.fillWidth: true
-        }
+        // Item {
+        //     Layout.topMargin: 50
+        //     Layout.fillWidth: true
+        // }
 
         Rectangle {
             id: statRow1
@@ -219,47 +220,12 @@ Rectangle {
         }
 
 
-        RowLayout {
-            id: btnRowLayout
-
-            Layout.alignment: Qt.AlignHCenter
-            Layout.topMargin: 80
-            spacing: 12
-
-            property int btnWidth: 180
-            property int fontSize: 24
-
-            property string btnActiveText: qsTr('DISARM')
-            property string btnActiveColor: "#1f7a3a"
-            property bool btnActiveIsArmed: false
-
-            property string btnSafeText: qsTr('ARM')
-            property string btnSafeColor: "#8a2c2c"
-            property bool btnSafeIsArmed: true
-
-            ControlButton {
-                id: btnActive
-
-                Layout.preferredWidth: btnRowLayout.btnWidth
-                textFontSize: btnRowLayout.fontSize
-                text: btnRowLayout.btnActiveText
-                buttonColor: btnRowLayout.btnActiveColor
-                onClicked: { armAll(btnRowLayout.btnActiveIsArmed) }
-            }
-            ControlButton {
-                id: btnSafe
-
-                Layout.preferredWidth: btnRowLayout.btnWidth
-                textFontSize: btnRowLayout.fontSize
-                text: btnRowLayout.btnSafeText
-                buttonColor: btnRowLayout.btnSafeColor
-                onClicked: { armAll(btnRowLayout.btnSafeIsArmed) }
+        ControlButtonsRow {
+            onArmAll: {
+                dashboardPanel.armAll(arm)
             }
         }
 
-
-        // Consumes all unused vertical space, pushing the items below
-        // to the bottom of the panel.
         Item {
             Layout.fillHeight: true
         }
