@@ -2,7 +2,7 @@ import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
 
-// import "../dashboard"
+import "../dashboard"
 
 Rectangle {
     id: dashboardPanel
@@ -218,75 +218,42 @@ Rectangle {
             }
         }
 
+
         RowLayout {
             id: btnRowLayout
 
             Layout.alignment: Qt.AlignHCenter
             Layout.topMargin: 80
-
             spacing: 12
 
             property int btnWidth: 180
             property int fontSize: 24
 
-            Button {
+            property string btnActiveText: qsTr('DISARM')
+            property string btnActiveColor: "#1f7a3a"
+            property bool btnActiveIsArmed: false
+
+            property string btnSafeText: qsTr('ARM')
+            property string btnSafeColor: "#8a2c2c"
+            property bool btnSafeIsArmed: true
+
+            ControlButton {
                 id: btnActive
 
                 Layout.preferredWidth: btnRowLayout.btnWidth
-
-                text: qsTr("DISARM")
-
-                contentItem: Text {
-                    text: btnActive.text + ": " + deviceManagerId.activeDevices
-                    color: "white"
-                    font.pixelSize: btnRowLayout.fontSize
-                    font.bold: true
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                }
-
-                background: Rectangle {
-                    color: "#1f7a3a"
-                    radius: 4
-
-                    border.color: "white"
-                    border.width: 1
-                }
-
-                onClicked: {
-                    console.log("Clicked DISARM")
-                    armAll(false)
-                }
+                textFontSize: btnRowLayout.fontSize
+                text: btnRowLayout.btnActiveText
+                buttonColor: btnRowLayout.btnActiveColor
+                onClicked: { armAll(btnRowLayout.btnActiveIsArmed) }
             }
-
-            Button {
+            ControlButton {
                 id: btnSafe
 
                 Layout.preferredWidth: btnRowLayout.btnWidth
-
-                text: qsTr("ARM")
-
-                contentItem: Text {
-                    text: btnSafe.text + ": " + deviceManagerId.safeDevices
-                    color: "white"
-                    font.pixelSize: btnRowLayout.fontSize
-                    font.bold: true
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                }
-
-                background: Rectangle {
-                    color: "#8a2c2c"
-                    radius: 4
-
-                    border.color: "white"
-                    border.width: 1
-                }
-
-                onClicked: {
-                    console.log("Clicked ARM")
-                    armAll(true)
-                }
+                textFontSize: btnRowLayout.fontSize
+                text: btnRowLayout.btnSafeText
+                buttonColor: btnRowLayout.btnSafeColor
+                onClicked: { armAll(btnRowLayout.btnSafeIsArmed) }
             }
         }
 
