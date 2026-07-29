@@ -18,5 +18,6 @@
         <file>qml/devices/DevicePopup.qml</file>
         <file>qml/panels/MapZoomControls.qml</file>
         <file>qml/dashboard/ControlButton.qml</file>
+        <file>qml/dashboard/ControlButtonsRow.qml</file>
     </qresource>
 </RCC>
