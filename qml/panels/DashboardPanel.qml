@@ -54,170 +54,23 @@ Rectangle {
         //     Layout.fillWidth: true
         // }
 
-        Rectangle {
-            id: statRow1
-
-            property string label: "Total Devices"
-            property int value: deviceManagerId.totalDevices
-
-            Layout.topMargin: 4
-            Layout.fillWidth: true
-            Layout.preferredHeight: 60
-
-            radius: 8
-            color: "#1f2328"
-            border.color: "#505a66"
-            border.width: 1
-
-            RowLayout {
-                anchors.fill: parent
-                anchors.leftMargin: 18
-                anchors.rightMargin: 20
-
-                spacing: 10
-
-                Text {
-                    text: statRow1.label
-                    color: "#d8d8d8"
-                    font.pixelSize: 18
-
-                    Layout.fillWidth: true
-                    Layout.alignment: Qt.AlignVCenter
-                }
-
-                Text {
-                    text: statRow1.value
-                    color: "white"
-                    font.pixelSize: 24
-                    font.bold: true
-
-                    Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-                }
-            }
+        StatsRow {
+            label: "Total Devices"
+            value: deviceManagerId.totalDevices
         }
-        Rectangle {
-            id: statRow2
-
-            property string label: "Active Devices"
-            property int value: deviceManagerId.safeDevices
-
-            Layout.topMargin: 4
-            Layout.fillWidth: true
-            Layout.preferredHeight: 60
-
-            radius: 8
-            color: "#1f2328"
-            border.color: "#505a66"
-            border.width: 1
-
-            RowLayout {
-                anchors.fill: parent
-                anchors.leftMargin: 18
-                anchors.rightMargin: 20
-
-                spacing: 10
-
-                Text {
-                    text: statRow2.label
-                    color: "#d8d8d8"
-                    font.pixelSize: 18
-
-                    Layout.fillWidth: true
-                    Layout.alignment: Qt.AlignVCenter
-                }
-
-                Text {
-                    text: statRow2.value
-                    color: "white"
-                    font.pixelSize: 24
-                    font.bold: true
-
-                    Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-                }
-            }
+        StatsRow {
+            label: "Active Devices"
+            value: deviceManagerId.safeDevices
         }
-        Rectangle {
-            id: statRow3
-
-            property string label: "Total Detections"
-            property int value: deviceManagerId.totalDevices-deviceManagerId.safeDevices
-
-            Layout.topMargin: 4
-            Layout.fillWidth: true
-            Layout.preferredHeight: 60
-
-            radius: 8
-            color: "#1f2328"
-            border.color: "#505a66"
-            border.width: 1
-
-            RowLayout {
-                anchors.fill: parent
-                anchors.leftMargin: 18
-                anchors.rightMargin: 20
-
-                spacing: 10
-
-                Text {
-                    text: statRow3.label
-                    color: "#d8d8d8"
-                    font.pixelSize: 18
-
-                    Layout.fillWidth: true
-                    Layout.alignment: Qt.AlignVCenter
-                }
-
-                Text {
-                    text: statRow3.value
-                    color: "white"
-                    font.pixelSize: 24
-                    font.bold: true
-
-                    Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-                }
-            }
+        StatsRow {
+            label: "Total Detections"
+            value: deviceManagerId.totalDevices-deviceManagerId.safeDevices
         }
-        Rectangle {
-            id: statRow4
-
-            property string label: "Total Triggered"
-            property int value: deviceManagerId.totalDevices-deviceManagerId.safeDevices
-
-            Layout.topMargin: 4
-            Layout.fillWidth: true
-            Layout.preferredHeight: 60
-
-            radius: 8
-            color: "#1f2328"
-            border.color: "#505a66"
-            border.width: 1
-
-            RowLayout {
-                anchors.fill: parent
-                anchors.leftMargin: 18
-                anchors.rightMargin: 20
-
-                spacing: 10
-
-                Text {
-                    text: statRow4.label
-                    color: "#d8d8d8"
-                    font.pixelSize: 18
-
-                    Layout.fillWidth: true
-                    Layout.alignment: Qt.AlignVCenter
-                }
-
-                Text {
-                    text: statRow4.value
-                    color: "white"
-                    font.pixelSize: 24
-                    font.bold: true
-
-                    Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
-                }
-            }
+        StatsRow {
+            label: "Total Triggered"
+            value: deviceManagerId.totalDevices-deviceManagerId.safeDevices
         }
+
 
 
         ControlButtonsRow {
