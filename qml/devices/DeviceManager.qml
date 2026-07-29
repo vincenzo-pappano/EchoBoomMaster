@@ -8,8 +8,12 @@ Item {
     property var devices: []
     property alias model: deviceModel
 
-    property int activeCount: 0
     property int safeCount: 0
+
+    property int totalDevices: 0
+    property int activeDevices: 0
+    property int safeDevices: 0
+
 
     signal devicesLoaded(int count)
 
@@ -165,9 +169,9 @@ Item {
             else if (device.status === "SAFE")
                 ++safe
         }
-
-        activeCount = active
-        safeCount = safe
+        totalDevices = deviceModel.count
+        activeDevices = active
+        safeDevices = safe
     }
 
     Connections {
