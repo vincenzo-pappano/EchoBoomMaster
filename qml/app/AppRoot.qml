@@ -12,6 +12,8 @@ ScaledFixedAspectRatioWindow {
     property string rootVideoRootUrl: ""
     property string rootGitCommitId: ""
 
+    //signal armAll(bool arm)
+
     visible: true
     title: qsTr("Hello World")
 
@@ -43,7 +45,6 @@ ScaledFixedAspectRatioWindow {
                 id: mapPanelId
                 videoRootUrl: rootId.rootVideoRootUrl
 
-
                 Layout.fillWidth: true
                 Layout.fillHeight: true
 
@@ -61,7 +62,18 @@ ScaledFixedAspectRatioWindow {
                 fontSize: rootId.fontSize
 
                 model: deviceManagerId.model
+                deviceManager: deviceManagerId
 
+                onArmAll: {
+
+                    for(var i=0; i<model.count; i++) {
+                        var status = arm ? "SAFE" : "ACTIVE"
+                        var device = model.get(i)
+                        device.status = status
+                        console.log(device.status)
+                    }
+                    console.log(deviceManagerId.activeCount, deviceManagerId.safeCount)
+                }
             } // DashboardPanel
 
         } // RowLayout
