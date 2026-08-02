@@ -1,6 +1,8 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 
+import "../common"
+
 Dialog {
     id: rootId
     property var device
@@ -18,24 +20,6 @@ Dialog {
 
     property real dragOffsetX: 0
     property real dragOffsetY: 0
-
-    // function keepInsideOverlay(newX, newY) {
-    //     x = Math.max(
-    //                 0,
-    //                 Math.min(
-    //                     newX,
-    //                     Overlay.overlay.width - width
-    //                 )
-    //             )
-
-    //     y = Math.max(
-    //                 0,
-    //                 Math.min(
-    //                     newY,
-    //                     Overlay.overlay.height - height
-    //                 )
-    //             )
-    // }
 
     background: Rectangle {
         id: backgroundId
@@ -66,59 +50,6 @@ Dialog {
             font.pixelSize: rootId.fontSize+4
             font.bold: true
         }
-
-        // MouseArea {
-        //     id: dialogHeaderMouseArea
-
-        //     anchors.fill: parent
-
-        //     acceptedButtons: Qt.LeftButton
-        //     cursorShape: Qt.SizeAllCursor
-
-        //     onPressed: function(mouse) {
-        //         var globalPosition =
-        //                 dialogHeaderMouseArea.mapToGlobal(
-        //                     mouse.x,
-        //                     mouse.y
-        //                 )
-
-        //         var overlayPosition =
-        //                 Overlay.overlay.mapFromGlobal(
-        //                     globalPosition.x,
-        //                     globalPosition.y
-        //                 )
-
-        //         rootId.dragOffsetX =
-        //                 overlayPosition.x - rootId.x
-
-        //         rootId.dragOffsetY =
-        //                 overlayPosition.y - rootId.y
-        //     }
-
-        //     onPositionChanged: function(mouse) {
-        //         if (!pressed)
-        //             return
-
-        //         var globalPosition =
-        //                 dialogHeaderMouseArea.mapToGlobal(
-        //                     mouse.x,
-        //                     mouse.y
-        //                 )
-
-        //         var overlayPosition =
-        //                 Overlay.overlay.mapFromGlobal(
-        //                     globalPosition.x,
-        //                     globalPosition.y
-        //                 )
-
-        //         armDialog.keepInsideOverlay(
-        //                     overlayPosition.x
-        //                         - armDialog.dragOffsetX,
-        //                     overlayPosition.y
-        //                         - armDialog.dragOffsetY
-        //                 )
-        //     }
-        // }
 
         Rectangle {
             id: closeButton
@@ -157,7 +88,6 @@ Dialog {
         }
     }
 
-
     contentItem: Column {
         id: columnId
         spacing: 6
@@ -183,112 +113,108 @@ Dialog {
 
             spacing: columnId.spacing-2
 
-            Button {
+            ControlButton {
                 id: btnSafe
 
-                text: qsTr("ARM")
                 width: 120
                 height: 24
 
+                text: qsTr("ARM")
+                buttonColor: "#8a2c2c"
+                textFontSize: rootId.fontSize
+
                 enabled: rootId.device.status === "ACTIVE"
+
                 onClicked: {
                     rootId.device.status = "SAFE"
                 }
-
-                contentItem: Text {
-                    text: btnSafe.text
-                    color: "white"
-                    font.pixelSize: rootId.fontSize
-                    font.bold: true
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                }
-
-                background: Rectangle {
-                    color: enabled ? "#8a2c2c" : "#D3D3D3"
-                    radius: 4
-
-                    border.color: "white"
-                    border.width: 1
+                Component.onCompleted: {
+                    console.log(enabled, rootId.device.status)
                 }
             }
 
-
-            Button {
+            ControlButton {
                 id: btnActive
 
-                text: qsTr("DISARM")
                 width: 120
                 height: 24
 
+                text: qsTr("DISARM")
+                buttonColor: "#1f7a3a"
+                textFontSize: rootId.fontSize
+
                 enabled: rootId.device.status === "SAFE"
+
                 onClicked: {
                     rootId.device.status = "ACTIVE"
                     console.log("clicked")
                 }
-
-                contentItem: Text {
-                    text: btnActive.text
-                    color: "white"
-                    font.pixelSize: rootId.fontSize
-                    font.bold: true
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
+                Component.onCompleted: {
+                    console.log(enabled, rootId.device.status)
                 }
+            } // ControlButton
 
-                background: Rectangle {
-                    color: enabled ? "#1f7a3a" : "#D3D3D3"
-                    radius: 4
+            // Button {
+            //     id: btnSafe
 
-                    border.color: "white"
-                    border.width: 1
-                }
-            }
+            //     text: qsTr("ARM")
+            //     width: 120
+            //     height: 24
 
-            // Repeater {
-            //     model: [
-            //         { name: "ARM", color: "#8a2c2c", ledIsGreen: false },
-            //         { name: "DISARM", color: "#1f7a3a", ledIsGreen: true },
-            //     ]
+            //     enabled: rootId.device.status === "ACTIVE"
+            //     onClicked: {
+            //         rootId.device.status = "SAFE"
+            //     }
 
-            //     Rectangle {
-            //         width: 120
-            //         height: 24
+            //     contentItem: Text {
+            //         text: btnSafe.text
+            //         color: "white"
+            //         font.pixelSize: rootId.fontSize
+            //         font.bold: true
+            //         horizontalAlignment: Text.AlignHCenter
+            //         verticalAlignment: Text.AlignVCenter
+            //     }
+
+            //     background: Rectangle {
+            //         color: enabled ? "#8a2c2c" : "#D3D3D3"
             //         radius: 4
 
-            //         color: modelData.color
             //         border.color: "white"
             //         border.width: 1
+            //     }
+            // }
 
-            //         Text {
-            //             anchors.centerIn: parent
-            //             text: modelData.name
-            //             color: "white"
-            //             font.pixelSize: rootId.fontSize
-            //             font.bold: true
-            //         }
-            //         MouseArea {
-            //             id: buttonMouseArea
 
-            //             anchors.fill: parent
-            //             acceptedButtons: Qt.LeftButton
-            //             cursorShape: Qt.PointingHandCursor
+            // Button {
+            //     id: btnActive
 
-            //             onClicked: {
-            //                 console.log(deviceId)
-            //                 // if (compositeDevice.ledIsGreen === modelData.ledIsGreen) {
-            //                 //     console.log("LED already",
-            //                 //                 modelData.ledIsGreen ? "GREEN" : "RED",
-            //                 //                 "- no change")
-            //                 //     return
-            //                 // }
-            //                 // compositeDevice.setLedIsGreen(modelData.ledIsGreen)
+            //     text: qsTr("DISARM")
+            //     width: 120
+            //     height: 24
 
-            //             } // onClicked
-            //         } // MouseArea
-            //     } // Rectangle
-            // } // Repeater
+            //     enabled: rootId.device.status === "SAFE"
+            //     onClicked: {
+            //         rootId.device.status = "ACTIVE"
+            //         console.log("clicked")
+            //     }
 
+            //     contentItem: Text {
+            //         text: btnActive.text
+            //         color: "white"
+            //         font.pixelSize: rootId.fontSize
+            //         font.bold: true
+            //         horizontalAlignment: Text.AlignHCenter
+            //         verticalAlignment: Text.AlignVCenter
+            //     }
+
+            //     background: Rectangle {
+            //         color: enabled ? "#1f7a3a" : "#D3D3D3"
+            //         radius: 4
+
+            //         border.color: "white"
+            //         border.width: 1
+            //     }
+            // }
         }
     }
 
