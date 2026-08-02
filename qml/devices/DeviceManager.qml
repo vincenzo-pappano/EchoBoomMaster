@@ -22,6 +22,13 @@ Item {
     }
 
 
+    function clearDevices() {
+        devices = []
+        deviceModel.clear()
+        deviceJsonFile = ""
+        updateTotals()
+    }
+
     Component.onCompleted: {
     }
 
@@ -74,13 +81,6 @@ Item {
                             console.warn("Skipping invalid devices at index", i)
                             continue
                         }
-                        // console.log("Loading device:",
-                        //             device.deviceId,
-                        //             "lat:", device.coordinates.latitude,
-                        //             "lon:", device.coordinates.longitude,
-                        //             "videoMode:", device.video ? device.video.mode : "none",
-                        //             "videoFile:", device.video ? device.video.file : "",
-                        //             "videoUdpPort", (device.video && device.video.udpPort !== undefined ? Number(device.video.udpPort) : 0) )
 
                         // NOTICE: the device model is flat
                         deviceModel.append({
