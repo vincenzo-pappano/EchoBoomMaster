@@ -18,12 +18,12 @@ ScaledFixedAspectRatioWindow {
     title: qsTr("Hello World")
 
     Component.onCompleted: {
-        deviceManagerId.loadDevices()
+        deviceManager.loadDevices()
         console.log("Git Commit ID: ", rootGitCommitId)
     }
 
     DeviceManager {
-        id: deviceManagerId
+        id: deviceManager
         appRootUrl: rootId.rootAppRootUrl
 
         onDevicesLoaded: {
@@ -48,7 +48,7 @@ ScaledFixedAspectRatioWindow {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
 
-                model: deviceManagerId.model
+                model: deviceManager.model
 
             } // MapPanel
 
@@ -61,18 +61,17 @@ ScaledFixedAspectRatioWindow {
 
                 fontSize: rootId.fontSize
 
-                model: deviceManagerId.model
-                deviceManager: deviceManagerId
+                deviceManager: deviceManager
 
                 onArmAll: {
 
-                    for(var i=0; i<model.count; i++) {
+                    for(var i=0; i<deviceManager.model.count; i++) {
                         var status = arm ? "SAFE" : "ACTIVE"
-                        var device = model.get(i)
+                        var device = deviceManager.model.get(i)
                         device.status = status
                         console.log(device.status)
                     }
-                    console.log(deviceManagerId.activeCount, deviceManagerId.safeCount)
+                    console.log("AppRoot onArmAll()", deviceManager.activeDevices, deviceManager.safeDevices)
                 }
             } // DashboardPanel
 

@@ -11,6 +11,7 @@ RowLayout {
     Layout.topMargin: 80
     spacing: 12
 
+    property var deviceManager
     property int btnWidth: 180
     property int fontSize: 24
 
@@ -32,6 +33,7 @@ RowLayout {
         text: root.btnActiveText
         buttonColor: root.btnActiveColor
         onClicked: { armAll(root.btnActiveIsArmed) }
+        enabled: deviceManager.activeDevices !== deviceManager.model.count
     }
     ControlButton {
         id: btnSafe
@@ -41,5 +43,6 @@ RowLayout {
         text: root.btnSafeText
         buttonColor: root.btnSafeColor
         onClicked: { armAll(root.btnSafeIsArmed) }
+        enabled: deviceManager.safeDevices !== deviceManager.model.count
     }
 }

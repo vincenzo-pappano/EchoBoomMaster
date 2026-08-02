@@ -5,7 +5,7 @@ import QtQuick.Controls 2.15
 import "../dashboard"
 
 Rectangle {
-    id: dashboardPanel
+    id: root
 
 
     signal armAll(bool arm)
@@ -49,33 +49,29 @@ Rectangle {
             Layout.alignment: Qt.AlignHCenter
         }
 
-        // Item {
-        //     Layout.topMargin: 50
-        //     Layout.fillWidth: true
-        // }
-
         StatsRow {
             label: "Total Devices"
-            value: deviceManagerId.totalDevices
+            value: root.deviceManager.totalDevices
         }
         StatsRow {
             label: "Active Devices"
-            value: deviceManagerId.safeDevices
+            value: root.deviceManager.safeDevices
         }
         StatsRow {
             label: "Total Detections"
-            value: deviceManagerId.totalDevices-deviceManagerId.safeDevices
+            value: root.deviceManager.totalDevices - root.deviceManager.safeDevices
         }
         StatsRow {
             label: "Total Triggered"
-            value: deviceManagerId.totalDevices-deviceManagerId.safeDevices
+            value: root.deviceManager.totalDevices - root.deviceManager.safeDevices
         }
 
 
 
         ControlButtonsRow {
+            deviceManager: root.deviceManager
             onArmAll: {
-                dashboardPanel.armAll(arm)
+                root.armAll(arm)
             }
         }
 
