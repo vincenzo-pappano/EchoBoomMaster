@@ -27,10 +27,10 @@ Button {
         radius: 4
 
         opacity: root.pressed ? 0.30
-                              : (root.hovered ? 0.65 : 1.0)
+                              : (root.hovered ? 0.80 : 1.0)
 
         border.color: "white"
-        border.width: 1
+        border.width: root.pressed ? 2 : 1
 
         Behavior on opacity {
             NumberAnimation { duration: 100 }
