@@ -17,8 +17,8 @@
         <file>qml/media/VideoPreview.qml</file>
         <file>qml/devices/DevicePopup.qml</file>
         <file>qml/panels/MapZoomControls.qml</file>
-        <file>qml/dashboard/ControlButton.qml</file>
         <file>qml/dashboard/ControlButtonsRow.qml</file>
         <file>qml/dashboard/StatsRow.qml</file>
+        <file>qml/common/ControlButton.qml</file>
     </qresource>
 </RCC>
