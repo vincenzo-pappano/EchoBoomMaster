@@ -4,7 +4,7 @@ Item {
     id: rootId
 
     property string appRootUrl: ""
-    property string deviceJsonFile: appRootUrl + "data/devices.json"
+    property string deviceJsonFile: "" //appRootUrl + "data/devices.json"
     property var devices: []
     property alias model: deviceModel
 
@@ -26,9 +26,16 @@ Item {
     }
 
 
-    function loadDevices() {
-        console.log(appRootUrl)
-        console.log(deviceJsonFile)
+    function loadDevices(fileUrl) {
+        if (!fileUrl || fileUrl.toString() === "") {
+            console.warn("No device file selected")
+            return
+        }
+
+        deviceJsonFile = fileUrl.toString()
+
+        console.log("Loading devices from:", deviceJsonFile)
+
         var xhr = new XMLHttpRequest()
 
         xhr.onreadystatechange = function() {
