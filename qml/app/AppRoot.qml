@@ -18,7 +18,7 @@ ScaledFixedAspectRatioWindow {
     title: qsTr("Hello World")
 
     Component.onCompleted: {
-        deviceManager.loadDevices()
+        // deviceManager.loadDevices()
         console.log("Git Commit ID: ", rootGitCommitId)
     }
 
