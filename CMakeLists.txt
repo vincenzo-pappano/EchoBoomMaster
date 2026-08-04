@@ -14,8 +14,36 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt5 5.15 REQUIRED COMPONENTS
     Core
+    Qml
     Quick
-    Widgets
+    QuickControls2
+    Multimedia
+    Widgets)
+
+set(GSTREAMER_ROOT
+    "C:/Program Files/gstreamer/1.0/mingw_x86_64"
+)
+
+set(
+    PKG_CONFIG_EXECUTABLE
+    "${GSTREAMER_ROOT}/bin/pkg-config.exe"
+    CACHE FILEPATH "GStreamer pkg-config executable"
+    FORCE
+)
+
+set(
+    ENV{PKG_CONFIG_PATH}
+    "${GSTREAMER_ROOT}/lib/pkgconfig"
+)
+
+find_package(PkgConfig REQUIRED)
+
+pkg_check_modules(
+    GSTREAMER
+    REQUIRED
+    IMPORTED_TARGET
+    gstreamer-1.0
+    gstreamer-app-1.0
 )
 
 add_executable(EchoBoomMaster WIN32
@@ -23,6 +51,8 @@ add_executable(EchoBoomMaster WIN32
     qml.qrc
     FixedAspectRatioWindow.h
     FixedAspectRatioWindow.cpp
+    GstVideoItem.h
+    GstVideoItem.cpp
 )
 
 target_link_libraries(EchoBoomMaster
@@ -30,7 +60,10 @@ target_link_libraries(EchoBoomMaster
         Qt5::Core
         Qt5::Quick
         Qt5::Widgets
-)
+        Qt5::Qml
+        Qt5::QuickControls2
+        Qt5::Multimedia
+        PkgConfig::GSTREAMER)
 
 execute_process(
     COMMAND git rev-parse --short HEAD

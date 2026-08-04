@@ -4,8 +4,8 @@
 #include <QQmlContext>
 #include <QUrl>
 #include <QDir>
-
-
+#include <gst/gst.h>
+#include "GstVideoItem.h"
 #include "FixedAspectRatioWindow.h"
 
 int main(int argc, char *argv[])
@@ -13,11 +13,20 @@ int main(int argc, char *argv[])
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
+
+    gst_init(&argc, &argv);
+
     QApplication app(argc, argv);
 
     const QUrl url(QStringLiteral("qrc:/qml/main.qml"));
 
     qputenv("QML_XHR_ALLOW_FILE_READ", "1");
+
+    qmlRegisterType<GstVideoItem>(
+        "EchoBoom.Video",
+        1,
+        0,
+        "GstVideoItem");
 
     qmlRegisterType<FixedAspectRatioWindow>(
         "CustomWindow",
@@ -59,5 +68,5 @@ int main(int argc, char *argv[])
 
     engine.load(url);
 
-    return QGuiApplication::exec();
+    return app.exec();
 }
