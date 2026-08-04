@@ -1,0 +1,110 @@
+[
+    {
+        "deviceId": "D01",
+        "video": {
+			"mode": "file",
+            "file": "videos/1_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 22.716339938424582,
+            "longitude": 88.35994662426924
+        },
+        "status": "SAFE"
+    },
+    {
+        "deviceId": "D02",
+        "video": {
+			"mode": "file",
+            "file": "videos/2_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 22.6932195783904,
+            "longitude": 88.36440982006974
+        },
+        "status": "ACTIVE"
+    },
+    {
+        "deviceId": "D03",
+        "video": {
+			"mode": "file",
+            "file": "videos/3_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 22.66518486833161,
+            "longitude": 88.35290850782019
+        },
+        "status": "SAFE"
+    },
+    {
+        "deviceId": "D04",
+        "video": {
+			"mode": "file",
+            "file": "videos/4_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 22.63318345329008,
+            "longitude": 88.35977496290235
+        },
+        "status": "ACTIVE"
+    },
+    {
+        "deviceId": "D05",
+        "video": {
+			"mode": "file",
+            "file": "videos/5_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 22.608939796206887,
+            "longitude": 88.36183489942118
+        },
+        "status": "SAFE"
+    },
+    {
+        "deviceId": "D06",
+        "video": {
+			"mode": "file",
+            "file": "videos/5_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 22.569792328065194,
+            "longitude": 88.3384889521592
+        },
+        "status": "SAFE"
+    },
+    {
+        "deviceId": "D07",
+        "video": {
+			"mode": "file",
+            "file": "videos/5_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 22.54839123761817,
+            "longitude": 88.30879153394471
+        },
+        "status": "SAFE"
+    },
+    {
+        "deviceId": "D08",
+        "video": {
+			"mode": "file",
+            "file": "videos/5_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 22.560756717162253,
+            "longitude": 88.25042666577525
+        },
+        "status": "SAFE"
+    },
+    {
+        "deviceId": "D09",
+        "video": {
+			"mode": "file",
+            "file": "videos/5_qt.wmv"
+		},
+        "coordinates": {
+            "latitude": 22.54458625171252,
+            "longitude": 88.23823870800004
+        },
+        "status": "SAFE"
+    }
+]

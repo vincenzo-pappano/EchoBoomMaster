@@ -111,7 +111,7 @@ ScaledFixedAspectRatioWindow {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        color: "royalblue"
+        color: "#2b3038"
 
         RowLayout {
 
