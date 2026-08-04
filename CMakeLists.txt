@@ -83,6 +83,7 @@ endif()
 target_compile_definitions(EchoBoomMaster
     PRIVATE
         GIT_COMMIT_ID="${GIT_COMMIT_HASH}"
+        PROJECT_VERSION_STRING="${PROJECT_VERSION}"
 )
 
 install(
