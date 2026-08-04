@@ -7,6 +7,9 @@
 #include <gst/gst.h>
 #include "GstVideoItem.h"
 #include "FixedAspectRatioWindow.h"
+#include "logging/Logger.h"
+
+Q_LOGGING_CATEGORY(logMain, "eb.main")
 
 int main(int argc, char *argv[])
 {
@@ -17,6 +20,20 @@ int main(int argc, char *argv[])
     gst_init(&argc, &argv);
 
     QApplication app(argc, argv);
+
+    QCoreApplication::setOrganizationName("Banergy");
+    QCoreApplication::setOrganizationDomain("banergy.com");
+    QCoreApplication::setApplicationName("EchoBoomMaster");
+    QCoreApplication::setApplicationVersion(PROJECT_VERSION_STRING);
+
+    Logger *logger = Logger::self();
+    if (logger->isReady()) {
+        Logger::installHandler();
+    }
+
+    qDebug(logMain) << "Logger03 debug test";
+    qInfo(logMain) << "Logger03 info test";
+    qWarning(logMain) << "Logger03 warning test";
 
     const QUrl url(QStringLiteral("qrc:/qml/main.qml"));
 
@@ -34,7 +51,7 @@ int main(int argc, char *argv[])
         0,
         "FixedAspectRatioWindow");
 
-    qDebug() << "Current Git Commit ID:" << GIT_COMMIT_ID;
+    qDebug(logMain) << "Current Git Commit ID:" << GIT_COMMIT_ID;
 
     QQmlApplicationEngine engine;
 
@@ -49,7 +66,7 @@ int main(int argc, char *argv[])
         Qt::QueuedConnection);
 
     QString appRootUrl = QUrl::fromLocalFile(QDir::currentPath() + "/").toString();
-    qDebug() << "appRootUrl: " << appRootUrl << Qt::endl;
+    qDebug(logMain) << "appRootUrl: " << appRootUrl << Qt::endl;
     engine.rootContext()->setContextProperty("appRootUrl", appRootUrl);
 
     engine.rootContext()->setContextProperty("gitCommitId", QString(GIT_COMMIT_ID));
@@ -59,7 +76,7 @@ int main(int argc, char *argv[])
             QCoreApplication::applicationDirPath() + "/"
             ).toString();
 
-    qDebug() << "videoRootUrl:" << videoRootUrl;
+    qDebug(logMain) << "videoRootUrl:" << videoRootUrl;
 
     engine.rootContext()->setContextProperty(
         "videoRootUrl",
