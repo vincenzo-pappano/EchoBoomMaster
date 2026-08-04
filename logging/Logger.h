@@ -18,12 +18,12 @@ public:
 
     static void installHandler();
     static void uninstallHandler();
+    static void configureFiltering();
 
     bool isReady() const;
     QString fileName() const;
     QString logDirectory() const;
     QString errorString() const;
-
 
 private:
     Logger();
@@ -31,6 +31,8 @@ private:
 
     bool initializeFile();
     QString createUniqueFilePath(const QString &directoryPath) const;
+    void registerCategory(const QString &category);
+    void writeLine(const QString &line);
 
     static void messageHandler(
         QtMsgType type,
@@ -39,16 +41,11 @@ private:
         );
 
     static QString severityName(QtMsgType type);
-
     void logMessage(
         QtMsgType type,
         const QMessageLogContext &context,
         const QString &message
         );
-
-
-    void writeLine(const QString &line);
-
     Q_DISABLE_COPY(Logger)
 
 private:

@@ -9,7 +9,10 @@
 #include "FixedAspectRatioWindow.h"
 #include "logging/Logger.h"
 
-Q_LOGGING_CATEGORY(logMain, "eb.main")
+Q_LOGGING_CATEGORY(appLog, "eb.appLog")
+
+Q_LOGGING_CATEGORY(heavyLog, "eb.heavy")
+#define qDebugHeavy() qCDebug(heavyLog)
 
 int main(int argc, char *argv[])
 {
@@ -26,14 +29,16 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationName("EchoBoomMaster");
     QCoreApplication::setApplicationVersion(PROJECT_VERSION_STRING);
 
+    Logger::configureFiltering();
     Logger *logger = Logger::self();
     if (logger->isReady()) {
         Logger::installHandler();
     }
 
-    qDebug(logMain) << "Logger03 debug test";
-    qInfo(logMain) << "Logger03 info test";
-    qWarning(logMain) << "Logger03 warning test";
+    qCInfo(appLog) << "Logger04 application category test";
+    qCInfo(appLog) << "Logger04 second application message";
+    qDebug() << "Logger04 default category test";
+    qDebugHeavy() << "Logger04 heavy debug test";
 
     const QUrl url(QStringLiteral("qrc:/qml/main.qml"));
 
@@ -51,7 +56,7 @@ int main(int argc, char *argv[])
         0,
         "FixedAspectRatioWindow");
 
-    qDebug(logMain) << "Current Git Commit ID:" << GIT_COMMIT_ID;
+    qDebug(appLog) << "Current Git Commit ID:" << GIT_COMMIT_ID;
 
     QQmlApplicationEngine engine;
 
@@ -66,7 +71,7 @@ int main(int argc, char *argv[])
         Qt::QueuedConnection);
 
     QString appRootUrl = QUrl::fromLocalFile(QDir::currentPath() + "/").toString();
-    qDebug(logMain) << "appRootUrl: " << appRootUrl << Qt::endl;
+    qDebug(appLog) << "appRootUrl: " << appRootUrl << Qt::endl;
     engine.rootContext()->setContextProperty("appRootUrl", appRootUrl);
 
     engine.rootContext()->setContextProperty("gitCommitId", QString(GIT_COMMIT_ID));
@@ -76,7 +81,7 @@ int main(int argc, char *argv[])
             QCoreApplication::applicationDirPath() + "/"
             ).toString();
 
-    qDebug(logMain) << "videoRootUrl:" << videoRootUrl;
+    qDebug(appLog) << "videoRootUrl:" << videoRootUrl;
 
     engine.rootContext()->setContextProperty(
         "videoRootUrl",

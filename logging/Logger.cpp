@@ -242,8 +242,8 @@ void Logger::logMessage(
             ? QString::fromUtf8(context.category)
             : QStringLiteral("default");
 
-    // Temporary Logger03 format.
-    // The complete metadata format comes in Logger04.
+    registerCategory(category);
+
     const QString line =
         QStringLiteral("[%1] [%2] %3")
             .arg(
@@ -280,5 +280,45 @@ void Logger::writeLine(const QString &line)
         );
 
     std::fflush(stdout);
+#endif
+}
+
+void Logger::configureFiltering()
+{
+#if EB_LOG_ENABLE_HEAVY_DEBUG
+    QLoggingCategory::setFilterRules(
+        QStringLiteral("eb.heavy.debug=true")
+        );
+#else
+    QLoggingCategory::setFilterRules(
+        QStringLiteral("eb.heavy.debug=false")
+        );
+#endif
+}
+
+void Logger::registerCategory(const QString &category)
+{
+#if EB_LOG_REGISTER_CATEGORIES
+    bool isNewCategory = false;
+
+    {
+        QMutexLocker locker(&m_mutex);
+
+        if (!m_registeredCategories.contains(category)) {
+            m_registeredCategories.insert(category);
+            isNewCategory = true;
+        }
+    }
+
+    if (isNewCategory) {
+        writeLine(
+            QStringLiteral(
+                "[INFO] [eb.logger] "
+                "*** Registered logging category: %1"
+                ).arg(category)
+            );
+    }
+#else
+    Q_UNUSED(category)
 #endif
 }

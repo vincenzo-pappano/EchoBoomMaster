@@ -18,4 +18,4 @@
 #define EB_LOG_INDENT_MULTILINE_MESSAGES  1
 
 // Optional verbose-debug category
-#define EB_LOG_ENABLE_HEAVY_DEBUG         1
+#define EB_LOG_ENABLE_HEAVY_DEBUG         0
