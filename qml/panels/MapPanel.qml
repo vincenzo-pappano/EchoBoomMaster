@@ -16,6 +16,10 @@ MapRefreshContainer {
     property var hoveredDevice: null
     property bool devicePopupVisible: false
 
+    function zoomToAllDevices() {
+        mainMap.fitViewportToMapItems()
+    }
+
     Plugin {
         id: mapPlugin
         name: "esri"

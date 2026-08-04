@@ -52,7 +52,17 @@ ScaledFixedAspectRatioWindow {
                 console.log("Selected device file:", file)
                 deviceManager.loadDevices(file)
             }
-        }
+            Connections {
+                target: deviceManager
+
+                function onDevicesLoaded() {
+                    if (deviceManager.model)
+                        if (deviceManager.model.count > 0)
+                            mapPanelId.zoomToAllDevices()()
+                    console.log("DeviceManager emitted deviceLoaded")
+                }
+            } // Connections
+        } // FileDialog
     } // Component
 
     MenuBar {
