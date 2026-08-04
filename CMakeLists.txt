@@ -53,6 +53,9 @@ add_executable(EchoBoomMaster WIN32
     FixedAspectRatioWindow.cpp
     GstVideoItem.h
     GstVideoItem.cpp
+    logging/LoggerConfig.h
+    logging/Logger.h
+    logging/Logger.cpp
 )
 
 target_link_libraries(EchoBoomMaster
