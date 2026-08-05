@@ -19,3 +19,5 @@
 
 // Optional verbose-debug category
 #define EB_LOG_ENABLE_HEAVY_DEBUG         0
+
+#define EB_LOG_FORCE_INITIALIZATION_FAILURE 1

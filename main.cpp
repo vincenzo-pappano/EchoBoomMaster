@@ -7,6 +7,8 @@
 #include <gst/gst.h>
 #include <QLoggingCategory>
 #include <QSysInfo>
+#include <QMessageBox>
+#include <QPushButton>
 
 #include "logging/Logger.h"
 #include "GstVideoItem.h"
@@ -38,7 +40,61 @@ int main(int argc, char *argv[])
 
     Logger::configureFiltering();
     Logger *logger = Logger::self();
-    if (logger->isReady()) {
+
+    if (!logger->isReady()) {
+        QMessageBox messageBox;
+
+        messageBox.setIcon(QMessageBox::Critical);
+        messageBox.setWindowTitle(
+            QStringLiteral("Logging Initialization Failed")
+            );
+
+        messageBox.setText(
+            QStringLiteral(
+                "EchoBoomMaster could not create its log file."
+                )
+            );
+
+        messageBox.setInformativeText(
+            QStringLiteral(
+                "Attempted log file:\n%1\n\n"
+                "Error:\n%2"
+                )
+                .arg(
+                    QDir::toNativeSeparators(
+                        logger->fileName()
+                        ),
+                    logger->errorString()
+                    )
+            );
+
+        messageBox.setStandardButtons(
+            QMessageBox::NoButton
+            );
+
+        QPushButton *continueButton =
+            messageBox.addButton(
+                QStringLiteral("Continue without logging"),
+                QMessageBox::AcceptRole
+                );
+
+        QPushButton *exitButton =
+            messageBox.addButton(
+                QStringLiteral("Exit"),
+                QMessageBox::RejectRole
+                );
+
+        messageBox.setDefaultButton(exitButton);
+        messageBox.setEscapeButton(exitButton);
+
+        messageBox.exec();
+
+        if (messageBox.clickedButton() == exitButton) {
+            return EXIT_FAILURE;
+        }
+
+        Q_UNUSED(continueButton)
+    } else {
         Logger::installHandler();
     }
 
