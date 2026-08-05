@@ -84,6 +84,19 @@ bool Logger::initializeFile()
             QStringLiteral("Logs")
             );
 
+    const QString logFilePath =
+        createUniqueFilePath(m_logDirectory);
+
+    m_file.setFileName(logFilePath);
+
+#if EB_LOG_FORCE_INITIALIZATION_FAILURE
+    m_errorString =
+        QStringLiteral(
+            "Forced logger initialization failure for testing."
+            );
+
+    return false;
+#endif
     if (!QDir().mkpath(m_logDirectory)) {
         m_errorString =
             QStringLiteral("Unable to create log directory: %1")
@@ -92,20 +105,9 @@ bool Logger::initializeFile()
         return false;
     }
 
-    const QString logFilePath =
-        createUniqueFilePath(m_logDirectory);
-
-    m_file.setFileName(logFilePath);
-
     if (!m_file.open(QIODevice::WriteOnly |
                      QIODevice::Text)) {
-        m_errorString =
-            QStringLiteral("%1: %2")
-                .arg(
-                    QDir::toNativeSeparators(logFilePath),
-                    m_file.errorString()
-                    );
-
+        m_errorString = m_file.errorString();
         return false;
     }
 
